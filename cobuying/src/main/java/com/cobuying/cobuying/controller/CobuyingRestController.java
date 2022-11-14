@@ -24,11 +24,11 @@ public class CobuyingRestController {
     }
     @GetMapping("/cobuying/all")
     public List<Cobuying> getProducts(){ return cobuyingRepository.findAll();}
-    @PostMapping("/api/products")
+    @PostMapping("/cobuying")
     public Cobuying createProduct(@RequestBody CobuyingRequestDto requestDto){
         return new Cobuying(requestDto);
     }
-    @GetMapping("/api/products/{id}")
+    @GetMapping("/cobuying/{id}")
     public Optional<Member> getwhois(@PathVariable Long id){
         return memberRepository.findById(id);
     }
