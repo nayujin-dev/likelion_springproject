@@ -12,4 +12,5 @@ public class CobuyingRequestDto {
     private String account;
     private String deadline;
     private String chatlink;
+    private Long id;
 }

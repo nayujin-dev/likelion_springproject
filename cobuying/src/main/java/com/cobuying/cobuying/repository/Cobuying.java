@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @NoArgsConstructor // 기본 생성자를 만들어줍니다.
 @Entity // DB 테이블 역할을 합니다.
@@ -15,6 +16,11 @@ public class Cobuying{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
+
+
+    @ManyToOne
+    @JoinColumn(name="mid")
+    private Member member;
 
     // 반드시 값을 가지도록 합니다.
     @Column(nullable = false)
@@ -46,6 +52,7 @@ public class Cobuying{
 
     // 관심 상품 생성 시 이용합니다.
     public Cobuying(CobuyingRequestDto requestDto) {
+        this.id=requestDto.getId();
         this.title = requestDto.getTitle();
         this.price = requestDto.getPrice();
         this.design=requestDto.getDesign();
@@ -54,6 +61,9 @@ public class Cobuying{
         this.deadline= requestDto.getDeadline();
         this.account= requestDto.getAccount();
         this.chatlink= requestDto.getChatlink();
+    }
+    public void opencobuying(Member member){
+        this.member=member;
     }
 
 }
